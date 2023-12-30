@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace WordleClone.Results;
 
 public class IncorrectResult : Result
@@ -8,29 +6,35 @@ public class IncorrectResult : Result
     {
         IsCorrect = false;
         Message = "One or more letters are correct";
-
-        var modifiableCorrectWord = new StringBuilder(correctWord);
+        
+        var used = new bool[correctWord.Length];
 
         for (var i = 0; i < wordGuess.Length; i++)
         {
-            var guessChar = wordGuess[i];
-
-            if (guessChar == correctWord[i])
+            if (wordGuess[i] == correctWord[i])
             {
-                Letters[i] = new Letter(guessChar, LetterPlacement.Correct);
-                modifiableCorrectWord[i] = '-';
-                continue;
+                Letters[i] = new Letter(wordGuess[i], LetterPlacement.Correct);
+                used[i] = true;
             }
+        }
 
-            var indexInModifiable = modifiableCorrectWord.ToString().IndexOf(guessChar);
-            if (indexInModifiable != -1)
+        for (var i = 0; i < wordGuess.Length; i++)
+        {
+            if (Letters[i] == null)
             {
-                Letters[i] = new Letter(guessChar, LetterPlacement.Incorrect);
-                modifiableCorrectWord[indexInModifiable] = '-';
-            }
-            else
-            {
-                Letters[i] = new Letter(guessChar, LetterPlacement.NotPresent);
+                var isIncorrect = false;
+
+                for (var j = 0; j < correctWord.Length; j++)
+                {
+                    if (wordGuess[i] == correctWord[j] && !used[j])
+                    {
+                        isIncorrect = true;
+                        used[j] = true;
+                        break;
+                    }
+                }
+
+                Letters[i] = new Letter(wordGuess[i], isIncorrect ? LetterPlacement.Incorrect : LetterPlacement.NotPresent);
             }
         }
     }

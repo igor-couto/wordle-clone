@@ -15,22 +15,55 @@ let currentTile = getNextEmptyTile(currentRow);
 
 let game = {
     sessionId: generateUuid(),
-    status: GameStatus.InProgress
+    status: GameStatus.InProgress,
+    boardState: ["", "", "", "", "", ""]
 }
 
-if(!window.localStorage.getItem('game'))
+if (!window.localStorage.getItem('game'))
 {
     window.localStorage.setItem('game', JSON.stringify(game));
 }
+else
+{
+    game = JSON.parse(window.localStorage.getItem('game'));
+    loadGameBoard();
+}
+
 
 document.addEventListener('keydown', handleKeyboardInput);
 document.querySelectorAll('.game-keyboard-button').forEach(button => {
     button.addEventListener('click', handleOnScreenKeyboard);
 });
 
+function loadGameBoard() {
+    const rows = document.querySelectorAll('.Row');
+
+    game.boardState.forEach((guess, index) => {
+        if (guess !== "" && rows[index]) {
+            const tiles = rows[index].querySelectorAll('.Row-letter');
+            guess.split('').forEach((char, charIndex) => {
+                if (tiles[charIndex]) {
+                    tiles[charIndex].textContent = char.toUpperCase();
+                }
+            });
+            if (game.status === GameStatus.Won) {
+                // UI update logic for a game that's already won
+            }
+        }
+    });
+
+    currentRow = getCurrentRow();
+    currentTile = getNextEmptyTile(currentRow);
+}
+
 async function submitGuess(word) {
     if (word.length !== 5) {
         setMessage("Word must be 5 letters!");
+        return;
+    }
+
+    if (game.boardState.includes(word)) {
+        setMessage("You have already guessed this word.");
         return;
     }
 
@@ -53,13 +86,21 @@ async function submitGuess(word) {
         const data = await response.json();
         updateTiles(data);
 
+        game.boardState[currentRow.rowIndex] = word;
+        window.localStorage.setItem('game', JSON.stringify(game));
+
         if (data.isCorrect) {
             game.status = GameStatus.Won;
+            game.boardState[currentRow.rowIndex] = word;
             setMessage("Congratulations, you won!");
         } else {
             currentRow = getCurrentRow();
             currentTile = getNextEmptyTile(currentRow);
+            game.boardState[currentRow.rowIndex -1] = word;
         }
+
+        window.localStorage.setItem('game', JSON.stringify(game));
+
     } catch (error) {
         console.error('Fetch error:', error);
         setMessage(error);
@@ -74,16 +115,33 @@ function updateTiles(data) {
         switch (letter.letterPlacement) {
             case LetterPlacement.Correct: 
                 tileClass = 'letter-correct';
+                updateKeyboardButtonStatus(letter.character, tileClass);
                 break;
             case LetterPlacement.Incorrect: 
                 tileClass = 'letter-elsewhere';
+                updateKeyboardButtonStatus(letter.character, tileClass);
                 break;
             case LetterPlacement.NotPresent:
-                tileClass = 'letter-absent';
+                tileClass = 'letter-not-present';
+                updateKeyboardButtonStatus(letter.character, tileClass);
                 break;
         }
         tiles[index].classList.add(tileClass);
         tiles[index].textContent = letter.character.toUpperCase();
+    });
+}
+
+function updateKeyboardButtonStatus(letter, status) {
+    const buttons = document.querySelectorAll('.game-keyboard-button');
+    buttons.forEach(button => {
+        if (button.textContent.toUpperCase() === letter.toUpperCase()) {
+            
+            if(!button.classList.contains('letter-correct'))
+            {
+                button.classList.remove('letter-elsewhere', 'letter-not-present');
+                button.classList.add(status);
+            }
+        }
     });
 }
 
