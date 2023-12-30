@@ -41,6 +41,9 @@ This project is a clone of the popular word-guessing game Wordle. It's a simple,
 - C#
 - .NET 8 
 - Swagger
+
+### Why this stack?
+I consciously chose to use vanilla HTML, CSS, and JavaScript for the frontend. This decision was guided by a preference for simplicity and efficiency. In an era where JavaScript frameworks are increasingly ubiquitous, there's a tendency to default to using these tools for even the most straightforward tasks. I believe that not every project requires such complexity. By sticking to the fundamentals of web development, this project maintains a lean and straightforward codebase, free from unnecessary dependencies and the overhead that comes with heavier frameworks. This approach allows for easier understanding, modification, and maintenance of the code, making it a practical choice for a game like Wordle.
   
 ## Contributing
 Contributions to the project are welcome! To contribute, simply fork the repository and create your feature branch. Once you've made your changes, submit them via a pull request for review.
