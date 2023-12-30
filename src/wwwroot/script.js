@@ -36,11 +36,11 @@ document.querySelectorAll('.game-keyboard-button').forEach(button => {
 });
 
 function loadGameBoard() {
-    const rows = document.querySelectorAll('.Row');
+    const rows = document.querySelectorAll('.row');
 
     game.boardState.forEach((guess, index) => {
         if (guess !== "" && rows[index]) {
-            const tiles = rows[index].querySelectorAll('.Row-letter');
+            const tiles = rows[index].querySelectorAll('.row-letter');
             guess.split('').forEach((char, charIndex) => {
                 if (tiles[charIndex]) {
                     tiles[charIndex].textContent = char.toUpperCase();
