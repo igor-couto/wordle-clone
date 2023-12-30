@@ -4,6 +4,8 @@
 ## Overview
 This project is a clone of the popular word-guessing game Wordle. It's a simple, interactive web-based game where players attempt to guess a five-letter word within a set number of tries. Each guess provides feedback on the letters in the word, indicating whether they are in the correct position, present in the word but in a different position, or not in the word at all.
 
+![](https://github.com/igor-couto/images/blob/main/wordle-clone/preview.png)
+
 ## Setup and Installation
 
 ### Prerequisites
