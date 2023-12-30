@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="A simple word-guessing game clone" />
+    <title>Wordle Clone</title>
+    <link href="style.css" rel="stylesheet">
+    <script defer="defer" src="script.js"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <div class="app-container">
+        <h1>Wordle</h1>
+
+        <div class="game" style="display: block;">
+
+            <table class="game-rows" tabindex="0" aria-label="Table of guesses">
+            <tbody>
+                <tr class="row">
+                <td class="row-letter" aria-live="assertive" aria-label=""></td>
+                <td class="row-letter" aria-live="assertive" aria-label=""></td>
+                <td class="row-letter" aria-live="assertive" aria-label=""></td>
+                <td class="row-letter" aria-live="assertive" aria-label=""></td>
+                <td class="row-letter" aria-live="assertive" aria-label=""></td>
+                </tr>
+                <tr class="row">
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                </tr>
+                <tr class="row">
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                </tr>
+                <tr class="row">
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                </tr>
+                <tr class="row">
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                </tr>
+                <tr class="row">
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                <td class="row-letter" aria-live="off" aria-label=""></td>
+                </tr>
+            </tbody>
+            </table>
+            <p id="message" role="alert" style="user-select: none; white-space: pre-wrap;">Go ahead, guess a word!</p>
+            <div class="game-keyboard" aria-hidden="true">
+            <div class="game-keyboard-row">
+                <button tabindex="-1" class="game-keyboard-button">q</button>
+                <button tabindex="-1" class="game-keyboard-button">w</button>
+                <button tabindex="-1" class="game-keyboard-button">e</button>
+                <button tabindex="-1" class="game-keyboard-button">r</button>
+                <button tabindex="-1" class="game-keyboard-button">t</button>
+                <button tabindex="-1" class="game-keyboard-button">y</button>
+                <button tabindex="-1" class="game-keyboard-button">u</button>
+                <button tabindex="-1" class="game-keyboard-button">i</button>
+                <button tabindex="-1" class="game-keyboard-button">o</button>
+                <button tabindex="-1" class="game-keyboard-button">p</button>
+            </div>
+            <div class="game-keyboard-row">
+                <button tabindex="-1" class="game-keyboard-button">a</button>
+                <button tabindex="-1" class="game-keyboard-button">s</button>
+                <button tabindex="-1" class="game-keyboard-button">d</button>
+                <button tabindex="-1" class="game-keyboard-button">f</button>
+                <button tabindex="-1" class="game-keyboard-button">g</button>
+                <button tabindex="-1" class="game-keyboard-button">h</button>
+                <button tabindex="-1" class="game-keyboard-button">j</button>
+                <button tabindex="-1" class="game-keyboard-button">k</button>
+                <button tabindex="-1" class="game-keyboard-button">l</button>
+            </div>
+            <div class="game-keyboard-row">
+                <button tabindex="-1" class="game-keyboard-button game-keyboard-button-wide enter">ENTER</button>
+                <button tabindex="-1" class="game-keyboard-button">z</button>
+                <button tabindex="-1" class="game-keyboard-button">x</button>
+                <button tabindex="-1" class="game-keyboard-button">c</button>
+                <button tabindex="-1" class="game-keyboard-button">v</button>
+                <button tabindex="-1" class="game-keyboard-button">b</button>
+                <button tabindex="-1" class="game-keyboard-button">n</button>
+                <button tabindex="-1" class="game-keyboard-button">m</button>
+                <button tabindex="-1" class="game-keyboard-button game-keyboard-button-wide">⌫</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
+  </body>
+</html>
