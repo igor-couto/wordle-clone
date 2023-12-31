@@ -1,5 +1,6 @@
 using WordleClone.WordSet;
 using WordleClone.Results;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,9 +38,7 @@ var words = new[]
 IWordSet wordSet = new TrieTree();
 wordSet.Add(words);
 var correctWord = words[Random.Shared.Next(words.Length)];
-
-var correctResult = new CorrectResult(correctWord);
-var notFoundResult = new NotFoundResult();
+var notFoundResult = new WordNotFoundResult();
 
 app.MapGet("/answer", () => Results.Ok(correctWord))
 .WithName("Answer")
@@ -53,7 +52,7 @@ app.MapGet("/guess", (string word) =>
         return Results.BadRequest();
 
     if(word == correctWord)
-        return Results.Ok(correctResult);
+        return Results.Ok(new CorrectResult(correctWord));
 
     if(wordSet.Exists(word))
     {
@@ -65,5 +64,10 @@ app.MapGet("/guess", (string word) =>
 })
 .WithName("Guess")
 .WithOpenApi();
+
+if (app.Environment.IsDevelopment())
+{
+    app.MapPost("/answer", ([FromBody] string word) => correctWord = word);
+}
 
 app.Run();
