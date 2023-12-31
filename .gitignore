@@ -21,3 +21,6 @@ bld/
 
 # Zip Files
 *.zip
+
+# Log files
+*.log
