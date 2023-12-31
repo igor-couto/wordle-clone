@@ -1,8 +1,8 @@
 namespace WordleClone.Results;
 
-public class NotFoundResult : Result
+public class WordNotFoundResult : Result
 {
-    public NotFoundResult()
+    public WordNotFoundResult()
     {
         IsCorrect = false;
         Message = "Not in word list.";
