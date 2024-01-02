@@ -12,3 +12,4 @@ var benchmarkConfiguration = ManualConfig.CreateEmpty()
     .AddLogger(ConsoleLogger.Default);
 
 BenchmarkRunner.Run<FindWordsBenchmarks>(benchmarkConfiguration);
+BenchmarkRunner.Run<NotFindWordsBenchmarks>(benchmarkConfiguration);
