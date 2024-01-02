@@ -33,9 +33,8 @@ public class TrieTree : IWordSet
         foreach (var character in word)
         {
             if (!current.Children.TryGetValue(character, out TrieTreeNode value))
-            {
                 return false;
-            }
+            
             current = value;
         }
         return current.IsWord;
