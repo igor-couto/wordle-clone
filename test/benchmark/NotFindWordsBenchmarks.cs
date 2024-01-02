@@ -7,22 +7,24 @@ namespace WordleClone.Benchmark;
 [MemoryDiagnoser]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [RankColumn]
-public class NotFindWordsBenchmarks
+public class NotFindWordsBenchmarks : BenchmarkTestBase
 {
-    public TrieTree TrieTree { get; set; } = new();
-    public WordsArrayWithLinq WordsArrayWithLinq { get; set; } = new();
+    private readonly string _nonExistingWord = "nonexistingword";
 
-    public NotFindWordsBenchmarks()
-    {
-        var words = File.ReadAllLines("./Resources/words.txt");
-
-        WordsArrayWithLinq.Add(words);
-        TrieTree.Add(words);
-    }
+    public NotFindWordsBenchmarks() : base(){}
 
     [Benchmark]
-    public void FindNonExistingWord_With_WordsArrayWithLinq() => WordsArrayWithLinq.Exists("nonexistingword");
+    public void FindNonExistingWord_With_ArrayWithBinarySearch() => ArrayWithBinarySearch.Exists(_nonExistingWord);
 
     [Benchmark]
-    public void FindNonExistingWord_With_TrieTree() => TrieTree.Exists("nonexistingword");
+    public void FindNonExistingWord_With_WordsArrayWithLinq() => WordsArrayWithLinq.Exists(_nonExistingWord);
+
+    [Benchmark]
+    public void FindNonExistingWord_With_ArrayWithLoop() => ArrayWithLoop.Exists(_nonExistingWord);
+
+    [Benchmark]
+    public void FindNonExistingWord_With_HashSet() => HashSet.Exists(_nonExistingWord);
+
+    [Benchmark]
+    public void FindNonExistingWord_With_TrieTree() => TrieTree.Exists(_nonExistingWord);
 }

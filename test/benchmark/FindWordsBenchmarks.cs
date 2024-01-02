@@ -7,23 +7,24 @@ namespace WordleClone.Benchmark;
 [MemoryDiagnoser]
 [Orderer(SummaryOrderPolicy.FastestToSlowest)]
 [RankColumn]
-public class FindWordsBenchmarks
+public class FindWordsBenchmarks : BenchmarkTestBase
 {
+    private readonly string _existingWord = "labor";
 
-    public TrieTree TrieTree { get; set; } = new();
-    public WordsArrayWithLinq WordsArrayWithLinq { get; set; } = new();
-
-    public FindWordsBenchmarks()
-    {
-        var words = File.ReadAllLines("./Resources/words.txt");
-
-        WordsArrayWithLinq.Add(words);
-        TrieTree.Add(words);
-    }
+    public FindWordsBenchmarks() : base(){}
 
     [Benchmark]
-    public void FindExistingWord_With_WordsArrayWithLinq() => TrieTree.Exists("labor");
+    public void FindExistingWord_With_ArrayWithBinarySearch() => ArrayWithBinarySearch.Exists(_existingWord);
 
     [Benchmark]
-    public void FindExistingWord_With_TrieTree() => WordsArrayWithLinq.Exists("labor");
+    public void FindExistingWord_With_WordsArrayWithLinq() => WordsArrayWithLinq.Exists(_existingWord);
+
+    [Benchmark]
+    public void FindExistingWord_With_ArrayWithLoop() => ArrayWithLoop.Exists(_existingWord);
+
+    [Benchmark]
+    public void FindExistingWord_With_HashSet() => HashSet.Exists(_existingWord);
+
+    [Benchmark]
+    public void FindExistingWord_With_TrieTree() => WordsArrayWithLinq.Exists(_existingWord);
 }
