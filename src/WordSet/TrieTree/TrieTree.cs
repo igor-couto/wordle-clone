@@ -4,7 +4,7 @@ public class TrieTree : IWordSet
 {
     private readonly TrieTreeNode _root;
 
-    public TrieTree() => _root = new TrieTreeNode('*');
+    public TrieTree() => _root = new TrieTreeNode();
 
     public void Add(string[] words)
     {
@@ -16,14 +16,8 @@ public class TrieTree : IWordSet
     {
         var current = _root;
         foreach (var character in word)
-        {
-            if (!current.Children.TryGetValue(character, out TrieTreeNode value))
-            {
-                value = new TrieTreeNode(character);
-                current.Children[character] = value;
-            }
-            current = value;
-        }
+            current = current.GetChild(character);
+        
         current.IsWord = true;
     }
 
@@ -32,11 +26,12 @@ public class TrieTree : IWordSet
         var current = _root;
         foreach (var character in word)
         {
-            if (!current.Children.TryGetValue(character, out TrieTreeNode value))
+            var index = character - 'a';
+            if (current.Children == null || current.Children[index] == null)
                 return false;
             
-            current = value;
+            current = current.Children[index];
         }
-        return current.IsWord;
+        return current != null && current.IsWord;
     }
 }

@@ -1,8 +1,21 @@
 namespace WordleClone.WordSet;
 
-public class TrieTreeNode(char value)
+public class TrieTreeNode
 {
-    public char Value { get; set; } = value;
-    public Dictionary<char, TrieTreeNode> Children { get; set; } = [];
-    public bool IsWord { get; set; } = false;
+    private static readonly int AlphabetSize = 26;
+
+    public TrieTreeNode[] Children { get; private set; }
+    public bool IsWord { get; set; }
+
+    public TrieTreeNode GetChild(char ch)
+    {
+        if (Children == null)
+            Children = new TrieTreeNode[AlphabetSize];
+
+        var index = ch - 'a';
+        if (Children[index] == null)
+            Children[index] = new TrieTreeNode();
+        
+        return Children[index];
+    }
 }
