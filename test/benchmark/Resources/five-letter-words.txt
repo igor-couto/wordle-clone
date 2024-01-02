@@ -112,7 +112,6 @@ abuta
 abuts
 abuzz
 abwab
-ac/dc
 acale
 acana
 acapu
@@ -1460,7 +1459,6 @@ asuri
 asway
 aswan
 aswim
-at/wb
 atacc
 atake
 atame
@@ -4967,7 +4965,6 @@ dawut
 dazed
 dazey
 dazes
-dbm/m
 dbrad
 dcpsk
 ddcmp
@@ -9539,7 +9536,6 @@ ilone
 image
 imago
 imams
-imap3
 imare
 imaum
 imban
@@ -11177,7 +11173,6 @@ kwapa
 kwara
 kwasi
 kwela
-l/cpl
 laang
 laban
 labaw
@@ -11895,7 +11890,6 @@ llama
 llano
 lloyd
 lludd
-lm/ft
 loach
 loads
 loafs
@@ -13450,7 +13444,6 @@ muzzy
 mvssp
 mvsxa
 mweru
-n/s/f
 naacp
 naafi
 naara
@@ -16752,7 +16745,6 @@ rozel
 rozet
 rozum
 rrhea
-rs232
 rsfsr
 rspca
 rstse
