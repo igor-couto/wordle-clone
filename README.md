@@ -44,7 +44,17 @@ This project is a clone of the popular word-guessing game Wordle. It's a simple,
 
 ### Why this stack?
 I consciously chose to use vanilla HTML, CSS, and JavaScript for the frontend. This decision was guided by a preference for simplicity and efficiency. In an era where JavaScript frameworks are increasingly ubiquitous, there's a tendency to default to using these tools for even the most straightforward tasks. I believe that not every project requires such complexity. By sticking to the fundamentals of web development, this project maintains a lean and straightforward codebase, free from unnecessary dependencies and the overhead that comes with heavier frameworks. This approach allows for easier understanding, modification, and maintenance of the code, making it a practical choice for a game like Wordle.
-  
+
+
+## Benchmarking
+In this project, I'm conducting performance benchmarks to compare two distinct approaches for searching strings within a set of words: Trie Tree vs LINQ Contains Method. The motivation behind this comparison is to identify the most efficient method in terms of execution speed and resource usage.
+
+### Running the Benchmark
+To run these benchmarks, simply execute the `run-benchmark.sh` script in the root of the repository. This script will automatically set up the environment and run the benchmarks, making it easy to reproduce the tests.
+
+### Benchmark Results
+You can find the detailed results of the benchmarking [here](https://github.com/igor-couto/wordle-clone/blob/main/test/benchmark/BenchmarkDotNet.Artifacts/results/WordleClone.Benchmark.FindWordsBenchmarks-report-default.md)
+
 ## Contributing
 Contributions to the project are welcome! To contribute, simply fork the repository and create your feature branch. Once you've made your changes, submit them via a pull request for review.
 
