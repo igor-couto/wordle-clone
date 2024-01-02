@@ -1,5 +1,9 @@
 Feature: Wordl Game
 
+Scenario: Starting a New Game
+    Given a new game
+    Then the game is in the default playable state
+
 Scenario: Correct Guess
     Given a new game with the word "phone"
     When submiting the word "phone"

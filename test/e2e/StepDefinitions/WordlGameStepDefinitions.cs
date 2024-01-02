@@ -52,6 +52,31 @@ public sealed class WordlGameStepDefinitions
         actions.SendKeys(Keys.Enter).Perform();
     }
 
+    [Then("the game is in the default playable state")]
+    public void TheGameIsInTheDefaultPlayableState()
+    {
+        var messageElement = _driver.FindElement(By.Id("message"));
+        messageElement.Text.Should().Be("Go ahead, guess a word!");
+
+        var keyboardKeys = "qwertyuiopasdfghjklzxcvbnm";
+
+        foreach (var key in keyboardKeys)
+        {
+            var keyboardKeyCssClass = _driver
+                .FindElement(By.Id($"key-{key}"))
+                .GetAttribute("class");
+
+            keyboardKeyCssClass.Contains("game-keyboard-button").Should().BeTrue();
+
+            keyboardKeyCssClass.Contains("letter-correct").Should().BeFalse();
+            keyboardKeyCssClass.Contains("letter-elsewhere").Should().BeFalse();
+            keyboardKeyCssClass.Contains("letter-not-present").Should().BeFalse();
+        }
+
+        var localStorageGame = GetGameFromLocalStorage();
+        localStorageGame.Status.Should().Be(GameStatus.InProgress);
+    }
+
     [Then("a word not found error happen")]
     public void AWordNotFoundErrorHappen()
     {
