@@ -9,7 +9,8 @@ namespace WordleClone.Benchmark;
 [RankColumn]
 public class FindWordsBenchmarks : BenchmarkTestBase
 {
-    private readonly string _existingWord = "labor";
+    [Params("abbey", "labor", "zebra")]
+    private readonly string _existingWord;
 
     public FindWordsBenchmarks() : base(){}
 
