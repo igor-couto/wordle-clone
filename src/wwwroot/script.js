@@ -29,9 +29,9 @@ else
     loadGameBoard();
 }
 
-
+const buttons = document.querySelectorAll('.game-keyboard-button');
 document.addEventListener('keydown', handleKeyboardInput);
-document.querySelectorAll('.game-keyboard-button').forEach(button => {
+buttons.forEach(button => {
     button.addEventListener('click', handleOnScreenKeyboard);
 });
 
@@ -132,7 +132,6 @@ function updateTiles(data) {
 }
 
 function updateKeyboardButtonStatus(letter, status) {
-    const buttons = document.querySelectorAll('.game-keyboard-button');
     buttons.forEach(button => {
         if (button.textContent.toUpperCase() === letter.toUpperCase()) {
             
