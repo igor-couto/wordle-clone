@@ -4,9 +4,6 @@ body{
     font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Bylynn Sans,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;
     margin:10px
 }
-code{
-    font-family:source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace
-}
 *{
     box-sizing:border-box
 }
@@ -19,7 +16,7 @@ body{
     display:flex;
     justify-content:center
 }
-.row-letter,.row-letter-color{
+.row-letter{
     align-items:center;
     border:2px solid #d3d6da;
     display:flex;
