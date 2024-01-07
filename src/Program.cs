@@ -71,10 +71,10 @@ app.MapGet("/guess", (string word) =>
     if (word.Length != 5)
         return Results.BadRequest();
 
-    word = word.ToLower();
-
-    if(word == correctWord)
+    if(string.Equals(word, correctWord, StringComparison.OrdinalIgnoreCase))
         return Results.Ok(new CorrectResult(correctWord));
+
+    word = word.ToLower();
 
     if(wordSet.Exists(word))
     {
