@@ -10,22 +10,22 @@ namespace WordleClone.Benchmark;
 public class FindWordsBenchmarks : BenchmarkTestBase
 {
     [Params("abbey", "labor", "zebra")]
-    private readonly string _existingWord;
+    public string ExistingWord;
 
     public FindWordsBenchmarks() : base(){}
 
     [Benchmark]
-    public void FindExistingWord_With_ArrayWithBinarySearch() => ArrayWithBinarySearch.Exists(_existingWord);
+    public void FindExistingWord_With_ArrayWithBinarySearch() => ArrayWithBinarySearch.Exists(ExistingWord);
 
     [Benchmark]
-    public void FindExistingWord_With_WordsArrayWithLinq() => WordsArrayWithLinq.Exists(_existingWord);
+    public void FindExistingWord_With_WordsArrayWithLinq() => WordsArrayWithLinq.Exists(ExistingWord);
 
     [Benchmark]
-    public void FindExistingWord_With_ArrayWithLoop() => ArrayWithLoop.Exists(_existingWord);
+    public void FindExistingWord_With_ArrayWithLoop() => ArrayWithLoop.Exists(ExistingWord);
 
     [Benchmark]
-    public void FindExistingWord_With_HashSet() => HashSet.Exists(_existingWord);
+    public void FindExistingWord_With_HashSet() => HashSet.Exists(ExistingWord);
 
     [Benchmark]
-    public void FindExistingWord_With_TrieTree() => WordsArrayWithLinq.Exists(_existingWord);
+    public void FindExistingWord_With_TrieTree() => WordsArrayWithLinq.Exists(ExistingWord);
 }
