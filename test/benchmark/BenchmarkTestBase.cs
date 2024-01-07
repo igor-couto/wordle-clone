@@ -17,7 +17,7 @@ public abstract class BenchmarkTestBase
 
     public BenchmarkTestBase()
     {
-        var words = File.ReadAllLines("./Resources/words.txt");
+        var words = File.ReadAllLines("./Resources/five-letter-words.txt");
 
         ArrayWithBinarySearch.Add(words);
         ArrayWithLoop.Add(words);
