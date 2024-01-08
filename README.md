@@ -33,21 +33,25 @@ This project is a clone of the popular word-guessing game Wordle. It's a simple,
 ## Technologies Used
 
 ### Fontend
-- HTML5
-- CSS3
-- JavaScript (ES6)
+- HTML5, CSS3 and JavaScript (ES6)
 
 ### Backend
-- C#
-- .NET 8 
-- Swagger
+- C# with .NET 8, Swagger
+- Testing: nUnit, FluentAssertions, SpecFlow, Selenium and BenchmarkDotNet
 
 ### Why this stack?
 I consciously chose to use vanilla HTML, CSS, and JavaScript for the frontend. This decision was guided by a preference for simplicity and efficiency. In an era where JavaScript frameworks are increasingly ubiquitous, there's a tendency to default to using these tools for even the most straightforward tasks. I believe that not every project requires such complexity. By sticking to the fundamentals of web development, this project maintains a lean and straightforward codebase, free from unnecessary dependencies and the overhead that comes with heavier frameworks. This approach allows for easier understanding, modification, and maintenance of the code, making it a practical choice for a game like Wordle.
 
-
 ## Benchmarking
-In this project, I'm conducting performance benchmarks to compare two distinct approaches for searching strings within a set of words: Trie Tree vs LINQ Contains Method. The motivation behind this comparison is to identify the most efficient method in terms of execution speed and resource usage.
+In this project, I'm conducting comprehensive performance benchmarks to compare several different approaches for searching strings within a sorted set of words. The approaches are:
+
+- **Array with ForEach Loop:** A straightforward approach using a loop to iterate over the array elements.
+- **Array with Binary Search:** This traditional search algorithm is known for its efficiency in sorted arrays.
+- **Array with LINQ:** LINQ provides a powerful and concise way to search through collections. In this case I'm using the Contains method.
+- **Hash Set:** Utilizing the .NET HashSet collection, which is designed for fast lookup of elements.
+- **Trie Tree:** A tree data structure used to store a dynamic set or associative array where the keys are strings.
+
+The motivation behind this comparison is to identify the most efficient method in terms of execution speed and resource usage.
 
 ### Running the Benchmark
 To run these benchmarks, simply execute the `run-benchmark.sh` script in the root of the repository. This script will automatically set up the environment and run the benchmarks, making it easy to reproduce the tests.
