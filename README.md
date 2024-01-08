@@ -36,7 +36,7 @@ This project is a clone of the popular word-guessing game Wordle. It's a simple,
 - HTML5, CSS3 and JavaScript (ES6)
 
 ### Backend
-- C# with .NET 8, Swagger
+- C# with .NET 8, Swagger, Shell script
 - Testing: nUnit, FluentAssertions, SpecFlow, Selenium and BenchmarkDotNet
 
 ### Why this stack?
