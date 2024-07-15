@@ -24,3 +24,6 @@ bld/
 
 # Log files
 *.log
+
+#minified files
+min-*
