@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  wordle-application:
+    container_name: wordle-application 
+    build:
+      context: .
+      dockerfile: ./src/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    ports:
+      - "53120:53120"
+      - "53121:53121"
