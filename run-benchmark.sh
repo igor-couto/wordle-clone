@@ -5,8 +5,8 @@ BOLD='\033[1m'
 
 echo
 echo -e "${BOLD}Building in Release mode ...${NOCOLOR}"
-dotnet build .\test\benchmark\Benchmark.csproj -c Release
+dotnet build test/benchmark/Benchmark.csproj -c Release
 
 echo
 echo -e "${BOLD}Running benchmark ...${NOCOLOR}"
-dotnet .\test\benchmark\bin\Release\net8.0\Benchmark.dll
+dotnet test/benchmark/bin/Release/net8.0/Benchmark.dll
