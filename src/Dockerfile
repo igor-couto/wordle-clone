@@ -11,9 +11,10 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=false
 ENV ASPNETCORE_URLS="http://+:50010;https://+:50011"
 ENV ASPNETCORE_HTTPS_PORT=50010
 ENV ASPNETCORE_HTTP_PORT=50011
-RUN adduser --disabled-password --home /app dotnetuser && chown -R dotnetuser /app
+RUN adduser --disabled-password --home /app dotnetuser
 WORKDIR /app
 COPY --from=build /app .
+RUN chown -R dotnetuser:dotnetuser /app
 USER dotnetuser
 EXPOSE 50010 50011
 
