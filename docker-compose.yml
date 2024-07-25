@@ -8,5 +8,5 @@ services:
     environment:
       ASPNETCORE_ENVIRONMENT: Development
     ports:
-      - "53120:53120"
-      - "53121:53121"
+      - "50010:50010"
+      - "50011:50011"

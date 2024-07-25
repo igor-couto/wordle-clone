@@ -13,7 +13,7 @@ public sealed class WordlGameStepDefinitions
 {
     private ChromeDriver _driver;
     private readonly JsonSerializerOptions _options = new() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
-    private readonly string _url = "https://localhost:53120";
+    private readonly string _url = "https://localhost:50010";
 
     [Given(@"a new game with the word ""(.*)""")]
     public async Task ANewGameWithTheWord(string word)
