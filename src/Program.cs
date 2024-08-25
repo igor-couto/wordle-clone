@@ -12,11 +12,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseKestrel(options => {
     options.AddServerHeader = false;
     options.ListenAnyIP(50010);
-    options.ListenAnyIP(50011, listenOptions =>
-    {
-        listenOptions.UseHttps();
+    // options.ListenAnyIP(50011, listenOptions =>
+    // {
         //listenOptions.UseHttps("/app/certs/certificate.crt", "/app/certs/certificate.key");
-    });
+    //});
 });
 
 builder.Services.AddResponseCompression(options =>
