@@ -68,7 +68,7 @@ async function submitGuess(word) {
     }
 
     try {
-        const response = await fetch(`http://igorcouto.com/projects/wordle/guess?word=${word}`);
+        const response = await fetch(`https://igorcouto.com/projects/wordle/guess?word=${word}`);
 
         if (!response.ok) {
             if(response.status == 404)
