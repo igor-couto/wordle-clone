@@ -12,16 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseKestrel(options => {
     options.AddServerHeader = false;
     options.ListenAnyIP(50010);
-    // options.ListenAnyIP(50011, listenOptions =>
-    // {
-        //listenOptions.UseHttps("/app/certs/certificate.crt", "/app/certs/certificate.key");
-    //});
 });
 
 builder.Services.AddResponseCompression(options =>
 {
     options.Providers.Add<BrotliCompressionProvider>();
-    options.EnableForHttps = true;
 });
 
 builder.Services.Configure<BrotliCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
@@ -53,8 +48,6 @@ app.UseStaticFiles(new StaticFileOptions
         context.Context.Response.Headers.Expires = DateTime.UtcNow.AddSeconds(oneMonthInSeconds).ToString("R"); // RFC1123 format
     }
 });
-
-app.UseHttpsRedirection();
 
 var words = new[]
 {
