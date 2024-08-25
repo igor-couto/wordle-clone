@@ -12,10 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseKestrel(options => {
     options.AddServerHeader = false;
     options.ListenAnyIP(50010);
-    // options.ListenAnyIP(50011, listenOptions =>
-    // {
-    //     listenOptions.UseHttps("/app/certs/certificate.crt", "/app/certs/certificate.key");
-    // });
+    options.ListenAnyIP(50011, listenOptions =>
+    {
+        listenOptions.UseHttps();
+        //listenOptions.UseHttps("/app/certs/certificate.crt", "/app/certs/certificate.key");
+    });
 });
 
 builder.Services.AddResponseCompression(options =>
@@ -33,17 +34,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 
-    app.UseCors(builder => builder
-        .AllowAnyOrigin()
-        .AllowAnyMethod()
-        .AllowAnyHeader()
-    );
-}
+app.UseCors(builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+);
 
 app.UseResponseCompression();
 app.UseDefaultFiles();
